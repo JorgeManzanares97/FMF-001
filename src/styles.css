@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* Mandatory */
+@import '~ng-wizard/themes/ng_wizard.min.css';
+
+/* Optional */
+/* If a theme other than default is used, the css file for that theme is required. */
+@import '~ng-wizard/themes/ng_wizard_theme_arrows.min.css';
+@import '~ng-wizard/themes/ng_wizard_theme_circles.min.css';
+@import '~ng-wizard/themes/ng_wizard_theme_dots.min.css';
+
+
+.btn_Guardar {
+  justify-content: center;
+  margin-top: 60px;
+  float:inherit;
+
+
+}
+
+.btn_paso2 {
+  justify-content: center;
+  margin-top: 60px;
+  float:inherit;
+  margin-left: 800px;
+
+
+
+}
+.text-center{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.input{
+  margin-bottom: 10px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding-top: 50px;
+}
+
+.card {
+  box-shadow: 0 5px 5px 5px #e1e1e1;
+  max-width: 350px;
+  padding: 15px;
+  border-radius: 5px;
+  margin: auto;
+  text-align: center;
+}
+
+.imgProfile {
+  width: 50%;
+  border: 5px solid #e1e1e1;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.imgOp {
+  width: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: left;
+}
+.social {
+  margin: 20px 0;
+  width: 100%;
+   background-color: rgb(92, 184, 92);
+   color: white;
+   text-align: center;
+   margin-bottom: 0px;
+  font-size: 20px;
+}
+
+a {
+  font-size: 26px;
+  padding: 7px 12px;
+  text-decoration: none;
+  color: #585858;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+}
+
+
+table, table tr td {
+  width: 290px;
+  margin: 0 auto;
+  border: 1px solid #e1e1e1;
+  text-align: left;
+}
+
+.letraNombre{
+  font-size: 20px;
+}
+

@@ -1,0 +1,284 @@
+<ng-wizard [config]="config" (stepChanged)="stepChanged($event)" >
+
+  <ng-wizard-step [title]="'Paso 1'" [description]="'Formulario de datos'"
+    [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+    <span>
+
+      <form (ngSubmit)='guardar(forma)' #forma='ngForm' class="text-center" >
+
+        <div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+
+            <input class="form-control input"
+              type="text"
+              name="nombre"
+              placeholder="Nombre"
+              required
+              minlength="3"
+              [class.is-invalid]="nombre.invalid && nombre.touched"
+              [(ngModel)]="jugador.nombre"
+              #nombre="ngModel">
+            <small
+            *ngIf="nombre.invalid && nombre.touched"
+            class="form-text text-danger">
+            Ingrese su nombre
+                </small>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label">Apellido Paterno</label>
+              <div class="col-8">
+
+              <input class="form-control input"
+                type="text"
+                name="apellidoP"
+                placeholder="Apellido Paterno"
+                required
+                minlength="3"
+                [class.is-invalid]="apellidoP.invalid && apellidoP.touched"
+                [(ngModel)]="jugador.apellidoP"
+                #apellidoP="ngModel">
+              <small
+              *ngIf="apellidoP.invalid && apellidoP.touched"
+              class="form-text text-danger">
+              Ingrese su  apellido paterno
+                  </small>
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido Materno</label>
+                <div class="col-8">
+
+                <input class="form-control input"
+                  type="text"
+                  name="apellidoM"
+                  placeholder="Apellido Materno"
+                  required
+                  minlength="3"
+                  [class.is-invalid]="apellidoM.invalid && apellidoM.touched"
+                  [(ngModel)]="jugador.apellidoM"
+                  #apellidoM="ngModel">
+                <small
+                *ngIf="apellidoM.invalid && apellidoM.touched"
+                class="form-text text-danger">
+                Ingrese su  apellido materno
+                    </small>
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+                  <label class="col-2 col-form-label">Fecha de Nacimiento</label>
+                  <div class="col-8">
+
+                  <input class="form-control input"
+                    type="date"
+                    name="fecha"
+                    required
+                    [class.is-invalid]="fecha.invalid && fecha.touched"
+                    [(ngModel)]="jugador.fecha"
+                    #fecha="ngModel">
+                  <small
+                  *ngIf="fecha.invalid && fecha.touched"
+                  class="form-text text-danger">
+                  Ingrese su fecha de nacimiento
+                      </small>
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Genero</label>
+                    <div class="col-8">
+
+                    <div class="form-check form-check-inline ">
+                    <input class="form-check-input"
+                    type="radio"
+                    name="genero"
+                    value="M"
+                    [class.is-invalid]="genero.invalid && genero.touched"
+                    [(ngModel)]="jugador.genero"
+                    required
+                    ngModel
+                    #genero="ngModel">
+                    <label class="form-check-label input">Masculino</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input"
+                    type="radio"
+                    name="genero"
+                    value="F"
+                    [class.is-invalid]="genero.invalid && genero.touched"
+                    [(ngModel)]="jugador.genero"
+                    required
+                    ngModel
+                    #genero="ngModel">
+                    <label class="form-check-label">Femenino</label>
+                    </div>
+                    <small
+                    *ngIf="genero.invalid && genero.touched"
+                    class="form-text text-danger">
+                    Seleccione su genero
+                    </small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row input">
+                    <label class="col-2 col-form-label">Nacionalidad</label>
+                    <div class="col-8">
+                    <select class="form-control"
+                    name="pais"
+                    [disabled]="paises.length === 0"
+                    [class.is-invalid]="pais.invalid && pais.touched"
+                    [(ngModel)]="jugador.nacionalidad"
+                    required
+                    #pais="ngModel">
+                    <option *ngFor="let pais of paises" [value]="pais.codigo">
+                    {{ pais.nombre }}
+                    </option>
+                    </select>
+                    <small
+                    *ngIf="pais.invalid && pais.touched"
+                    class="form-text text-danger">
+                    Seleccione su nacionalidad
+                    </small>
+                    </div>
+                  </div>
+
+
+              <div class="form-group row">
+                <label class="col-2 col-form-label">RFC</label>
+                <div class="col-8">
+
+                <input class="form-control input"
+                  type="text"
+                  name="rfc"
+                  placeholder="RFC"
+                  pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$"
+                  title="Composición de RFC incorrecto"
+                  required
+                  minlength="3"
+                  [class.is-invalid]="rfc.invalid && rfc.touched"
+                  [(ngModel)]="jugador.rfc"
+                  #rfc="ngModel">
+                <small
+                *ngIf="rfc.invalid && rfc.touched"
+                class="form-text text-danger">
+                Ingrese su RFC
+                    </small>
+                  </div>
+                </div>
+
+                <div class="form-group row input">
+                  <label class="col-2 col-form-label">Equipo</label>
+                  <div class="col-8">
+                  <select class="form-control"
+                  name="equipo"
+                  [disabled]="equipos.length === 0"
+                  [class.is-invalid]="equipo.invalid && equipo.touched"
+                  [(ngModel)]="jugador.equipo"
+                  required
+                  #equipo="ngModel">
+                  <option *ngFor="let equipo of equipos" [value]="equipo.nombre">
+                  {{ equipo.nombre }}
+                  </option>
+                  </select>
+                  <small
+                  *ngIf="equipo.invalid && equipo.touched"
+                  class="form-text text-danger">
+                  Seleccione su equipo
+                  </small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-2 col-form-label">Ocupación</label>
+                  <div class="col-8">
+
+                  <input class="form-control"
+                    type="text"
+                    name="ocupacion"
+                    placeholder="Ocupación"
+                    required
+                    minlength="3"
+                    [class.is-invalid]="ocupacion.invalid && ocupacion.touched"
+                    [(ngModel)]="jugador.ocupacion"
+                    #ocupacion="ngModel">
+                  <small
+                  *ngIf="ocupacion.invalid && ocupacion.touched"
+                  class="form-text text-danger">
+                  Ingrese su  ocupación
+                      </small>
+                    </div>
+                  </div>
+
+
+        </div>
+
+        <button class="btn btn-success btn-block btn_Guardar btn-lg"> Guardar </button>
+
+      </form>
+
+  </span>
+  </ng-wizard-step>
+
+  <ng-wizard-step [title]="'Paso 2'" [description]="'Verifica tu credencial'">
+    <span >
+      <body >
+        <div class="card back">
+            <img src="assets/img/perfil.png" alt="image" class="imgProfile"/>
+            <h1 class="letraNombre">{{jugador.nombre}}</h1><h1 class="letraNombre">{{jugador.apellidoP}}</h1><h1 class="letraNombre">{{jugador.apellidoM}}</h1>
+
+            <table>
+                <tr>
+                    <td><strong>Equipo</strong></td>
+                    <td>{{jugador.equipo}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Nacionalidad</strong></td>
+                    <td>{{jugador.nacionalidad}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Fecha de nacimiento</strong></td>
+                    <td>{{jugador.fecha}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Género</strong></td>
+                    <td>{{jugador.genero}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Ocupación</strong></td>
+                    <td>{{jugador.ocupacion}}</td>
+                </tr>
+            </table>
+            <div class="social">
+
+                Federación Mexicana de Fútbol
+                <img src="assets/img/logo_fmf.png" class="imgOp" />
+
+            </div>
+        </div>
+      </body>
+
+      <button (click)='siguiente()' class="btn btn-success btn-block btn_paso2 btn-lg"> Siguiente </button>
+
+
+    </span>
+  </ng-wizard-step>
+
+  <ng-wizard-step [title]="'Paso 3'" [description]="'Descarga de pdf'"
+    [canEnter]="isValidFunctionReturnsObservable.bind(this)" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+    <span>
+      <button (click)='generatePDF()'class="btn btn-success btn-block btn_paso2 btn-lg"> Descargar PDF </button>
+
+    </span>
+  </ng-wizard-step>
+</ng-wizard>
